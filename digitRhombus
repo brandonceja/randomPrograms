@@ -75,7 +75,8 @@ public class figure
 			System.out.print("Do you want to continue Y/N? ");
 			contin = (char) System.in.read();
 			System.in.read();
-		
+			System.in.read();
+			
 		}while(contin == 'y' || contin == 'Y');
 	}
 }
