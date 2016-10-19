@@ -23,13 +23,11 @@ public class figure
 	public static void main(String[] args) throws IOException
 	{
 	
-		int row, esp, n, i;
+		int row = 9, esp = 0, n, i;
 		char contin;
 		
 		do
 		{
-			row = 9;
-			esp = 0; 
 			n = 1; 
 			i = 1;
 			
