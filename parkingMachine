@@ -1,0 +1,64 @@
+/*
+  This is a simulation program made for a parking machine
+  It generates a random payment between $15 and $30
+  It has to ask the user if he wants to pay with coins of
+  $10, $5, $2, or $1 (Mexico's coins)
+  Then show that the debt is paid or not and the change
+*/
+
+import java.io.IOException;
+
+public class parkingMachine 
+{
+
+	public static void main(String[] args) throws IOException
+	{
+		char pay;
+		int payment, coin=10, i=1;
+		
+		payment = (int) (Math.random()*15+15);
+
+		System.out.println("The payment is: $"+payment);
+
+		while(payment>0)
+		{
+			System.out.println("Do you want to pay with a  $"+coin+" coin?");
+			pay = (char)System.in.read();
+			System.in.read();
+			System.in.read();
+			
+			if(pay == 's' || pay == 'S')
+			{
+				payment-=coin;
+				System.out.println("The payment is: $"+payment);
+				pay = 'n';
+				coin = 10;
+				i = 1;
+				continue;
+			}
+			
+			else if((pay != 's' || pay != 'S') && i==4)
+			{
+				System.out.println("Your payment is not complete, you owe $"+payment);
+				break;
+			}
+			
+			switch (i)
+			{
+			case 1 :
+				coin = 5;
+				break;
+			case 2 :
+				coin = 2;
+				break;
+			case 3 :
+				coin = 1;
+			}
+			i++;
+		}	
+		if(payment <= 0)
+		{
+			System.out.println("Your payment has been covered, your change is: $" +(payment*-1));	
+		}		
+	}
+}
