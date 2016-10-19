@@ -1,0 +1,83 @@
+/*
+  The console has to print this:
+  
+    1
+   2 2
+  3   3
+ 4     4
+5       5
+ 4     4
+  3   3
+   2 2
+    1
+    
+    And ask the user if he wants to continue or not. 
+    If he wants to continue then the console has to print
+    again the same thing.
+*/
+
+import java.io.IOException;
+
+public class figure 
+{
+	public static void main(String[] args) throws IOException
+	{
+	
+		int row, esp, n, i;
+		char contin;
+		
+		do
+		{
+			row = 9;
+			esp = 0; 
+			n = 1; 
+			i = 1;
+			
+			for(int countR = 1; countR<=row ; countR++)
+			{
+				if(countR <=5)
+				{
+					for(int countEsp =4; countEsp>= countR; countEsp--)
+					{
+						System.out.print(" ");
+					}
+				}
+				else
+				{
+					for(int countEsp =6; countEsp<= countR; countEsp++)
+					{
+						System.out.print(" ");
+					}
+				}
+			
+				if(n!=1)
+				{
+					System.out.print(n);
+				}
+			
+				for(int countEsp = 1 ; countEsp<= esp; countEsp++)
+				{
+					System.out.print(" ");
+				}
+
+				System.out.println(n);
+		
+				if(countR<5)
+				{
+					esp = 2*countR-1;
+					n++;
+				}
+				else
+				{
+					esp = 2*(countR-i)-3;
+					i+=2;
+					n--;
+				}
+			}
+			System.out.print("Do you want to continue Y/N? ");
+			contin = (char) System.in.read();
+			System.in.read();
+		
+		}while(contin == 'y' || contin == 'Y');
+	}
+}
