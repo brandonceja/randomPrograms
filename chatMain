@@ -1,0 +1,39 @@
+/*
+  This code is meant to create a "chat" between the java virtual machine (server) and
+  a terminal using Telnet(client) all of this through socket programming.
+  
+  Here we only instantiate an object of the class connector and we call on it
+  the method start();
+  You can check the class connector in:  randomPrograms/conector
+  
+  In order to use the chat just use the next command in your terminal:
+  
+  telnet 127.0.0.1 9000
+
+  which means "use telnet to connect to my local IP adress on the port 9000"
+  
+  Then you can type any message and it will be shown in the JVM console, or you can
+  type in the JVM console and it will be shown in the terminal. The connection stops if
+  one of the users types "stop".
+
+  It's a very basic chat, you can only send one message at a time and it is not
+  well structured, I hope to make a better version in the future, but I wanted to
+  share it now with the world, hopping it helps someone with its own projects.
+  
+  For any doubts or suggestions you can contact me at: darth1701@hotmail.com
+  
+  -Brandon Ceja
+*/
+
+package sockets;
+
+public class chatMain 
+{
+
+	public static void main(String[] args) 
+	{
+		connector c = new connector();
+		c.start();
+	}
+
+}
