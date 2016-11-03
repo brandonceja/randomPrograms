@@ -1,0 +1,56 @@
+/*
+  Check randomProgams/chatMain for the info of this script
+*/
+
+package sockets;
+
+import java.net.*;                         
+import java.io.*;
+import java.util.Scanner;
+
+public class connector 
+{
+	ServerSocket server;
+	Socket socket;
+	int port = 9000;
+	DataOutputStream output;
+	BufferedReader input;
+	String JVMmessage, TELNETmessage;
+	Scanner read;
+	
+	public void start() 
+	{
+		try{
+			server = new ServerSocket(port);
+      
+			socket = new Socket();
+			socket = server.accept();
+			
+			input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+      read = new Scanner(System.in);
+			
+			output = new DataOutputStream(socket.getOutputStream());
+			
+			output.writeUTF("type stop if you want to close the connection");
+			output.writeUTF("\n");
+			
+			
+			do{
+				output.writeUTF("Telnet:   ");
+				
+				TELNETmessage = input.readLine();
+				System.out.println("Telnet:   "+TELNETmessage);
+				
+				System.out.print("Java:   ");
+				JVMmessage = read.nextLine();
+				
+				output.writeUTF("Java:    "+JVMmessage);
+				output.writeUTF("\n");
+			
+			}while(!(TELNETmessage.equals("stop")) && !(JVMmessage.equals("stop")));
+			
+			socket.close();
+			
+		}catch(Exception e){};
+	}
+}
